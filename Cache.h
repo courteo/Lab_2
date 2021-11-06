@@ -128,7 +128,7 @@ public:
 
     void ChangeMaxCapacity(int MaxCapacity){
         if (MaxCapacity < GetCapacity()){
-            RemoveCount(MaxCapacity - GetCapacity());
+            RemoveCount( GetCapacity()- MaxCapacity);
         }
 
         p_MaxCapacity = MaxCapacity;
