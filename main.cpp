@@ -2,27 +2,29 @@
 
 #include "Cache.h"
 #include "ctime"
+#include "string"
 
 
 int main() {
     Cache<int> A;
-    A.Add(1);
-    A.Add(3);
-    A.Add(1);
+    auto q = A.PersonInput();
+    auto w = A.PersonInput();
+    auto e = A.PersonInput();
+    auto r = A.PersonInput();
+    A.Add(q);
+    A.Add(w);
+    A.Add(q);
+    A.Add(w);
+    A.Add(w);
+    A.Add(e);
+    A.Add(r);
+    A.Add(e);
+    A.Add(e);
+    A.Add(e);
     A.PrintCache();
-    A.Add(3);
-    A.Add(3);
-    A.Add(2);
-    A.Add(4);
-    A.Add(2);
-    A.Add(2);
-    A.Add(2);
+    A.Remove(w);
     A.PrintCache();
-    A.Remove(3);
-    A.PrintCache();
-    //abc.Add(23);
-    //std::cout << abc.IsContains(23);
-    //abc.Add(23);
+    std::cout << A.FindCacheIn(e);
 
     return 0;
 }

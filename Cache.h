@@ -22,7 +22,7 @@ private:
         }
 
         friend std::ostream& operator<< (std::ostream &out, Person &arr) {
-            return std::cout << "--Name: " << arr.p_Name << " Job: " << arr.p_Job << " Salary: " << arr.p_Salary << "-- ";
+            return std::cout << "--Name: " << arr.p_Name << "; Job: " << arr.p_Job << "; Salary: " << arr.p_Salary << ";-- ";
         }
     };
 
@@ -64,6 +64,15 @@ public:
     int GetCapacity() {
         return p_Capacity;
     };
+
+    Person PersonInput(){
+        std::string name;
+        std::string job;
+        T salary;
+        std::cin >> name >> job >> salary;
+        Person p(name, job, salary);
+        return p;
+    }
 
     int FindCacheIn(Person CacheIn){
         for (int i = 0; i < GetCapacity(); i++){
@@ -119,6 +128,14 @@ public:
         myCache.add(el, p_MaxCapacity);
         p_Capacity++;
     };
+
+    void ChangeMaxCapacity(int MaxCapacity){
+        if (MaxCapacity < GetCapacity()){
+            RemoveCount(MaxCapacity - GetCapacity());
+        }
+
+        p_MaxCapacity = MaxCapacity;
+    }
 
 
     void RemoveLast(){
