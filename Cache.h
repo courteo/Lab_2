@@ -2,20 +2,38 @@
 #define LAB_2_CACHE_H
 
 #include "SortedSequence.h"
-
+#include "string"
 
 
 template <class T>
 class Cache {
 private:
+    struct Person {
+        std::string p_Name = "";
+        std::string p_Job = " ";
+        T p_Salary;
+
+        Person(): p_Job(""), p_Name(""), p_Salary(T(0)){};
+        explicit  Person(std::string Name, std::string Job, T salary): p_Job(Job), p_Name(Name), p_Salary(salary){};
+        Person(const Person &arr): p_Job(arr.p_Job), p_Name(arr.p_Name), p_Salary(arr.p_Salary){};
+
+        bool operator == (const Person &other) const {
+            return  this->p_Job == other.p_Job && this->p_Name == other.p_Name && this->p_Salary == other.p_Salary;
+        }
+
+        friend std::ostream& operator<< (std::ostream &out, Person &arr) {
+            return std::cout << "--Name: " << arr.p_Name << " Job: " << arr.p_Job << " Salary: " << arr.p_Salary << "-- ";
+        }
+    };
+
     struct Element {
         int p_CacheTimes; // key
-        T p_CacheIn; // value
+        Person p_CacheIn; // value
 
-        Element(): p_CacheIn(0), p_CacheTimes(0){};
-        explicit Element(int CacheIn): p_CacheIn(CacheIn), p_CacheTimes(0){};
+        Element(): p_CacheIn(Person()), p_CacheTimes(0){};
+        explicit Element(Person CacheIn): p_CacheIn(CacheIn), p_CacheTimes(0){};
 
-        bool operator > ( const Element &other) const{
+        bool operator > ( const Element &other) const {
             return this->p_CacheTimes > other.p_CacheTimes;
         }
 
@@ -47,7 +65,7 @@ public:
         return p_Capacity;
     };
 
-    int FindCacheIn(int CacheIn){
+    int FindCacheIn(Person CacheIn){
         for (int i = 0; i < GetCapacity(); i++){
             if (CacheIn == myCache[i].p_CacheIn)
                 return i;
@@ -55,7 +73,7 @@ public:
         return -1;
     };
 
-    bool IsContains(T CacheIn){
+    bool IsContains(Person CacheIn){
         if (GetCapacity() == 0)
             return false;
 
@@ -83,7 +101,7 @@ public:
         return myCache[left];
     };
 
-    void Add(T CacheIn){
+    void Add(Person CacheIn){
         if (IsContains(CacheIn) == true){
             Element el;
             el.p_CacheIn = CacheIn;
@@ -108,7 +126,7 @@ public:
         p_Capacity--;
     };
 
-    void Remove(int CacheIn){
+    void Remove(Person CacheIn){
         myCache.remove(FindCacheIn(CacheIn));
         p_Capacity--;
     };
