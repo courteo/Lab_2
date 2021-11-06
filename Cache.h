@@ -53,9 +53,6 @@ public:
         p_MaxCapacity = MaxCapacity;
     };
 
-    void SetMaxCapacity(int MaxCapacity) {
-        p_MaxCapacity = MaxCapacity;
-    };
 
     int GetMaxCapacity(){
         return p_MaxCapacity;
