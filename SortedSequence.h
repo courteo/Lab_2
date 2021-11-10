@@ -1,6 +1,6 @@
+#ifndef SORTEDSEQUENCE_H
+#define SORTEDSEQUENCE_H
 
-#ifndef LAB_2_SORTEDSEQUENCE_H
-#define LAB_2_SORTEDSEQUENCE_H
 
 #include "ArraySequence.h"
 
@@ -92,4 +92,4 @@ std::ostream& operator<< (std::ostream &out, SortedSequence<T> &arr){
 }
 
 
-#endif //LAB_2_SORTEDSEQUENCE_H
+#endif // SORTEDSEQUENCE_H

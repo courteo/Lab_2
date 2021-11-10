@@ -6,6 +6,9 @@
 
 
 int main() {
+    std::string a = "\\";
+    std::cout << a.size();
+    return 0;
     Cache<int> A;
     auto q = A.PersonInput();
     auto w = A.PersonInput();

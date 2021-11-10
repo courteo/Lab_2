@@ -1,6 +1,6 @@
-#ifndef PROSTO_DAR_H
-#define PROSTO_DAR_H
-#include "sequence.h"
+#ifndef DYNAMIC_ARRAY_H
+#define DYNAMIC_ARRAY_H
+
 #include "iostream"
 
 template<class T>
@@ -195,13 +195,4 @@ public:
     }
 };
 
-
-
-
-
-
-
-
-
-
-#endif //PROSTO_DAR_H
+#endif // DYNAMIC_ARRAY_H

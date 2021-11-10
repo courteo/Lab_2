@@ -1,12 +1,11 @@
+#ifndef ARRAYSEQUENCE_H
+#define ARRAYSEQUENCE_H
 
-#ifndef PROSTO_ArraySequence_H
-#define PROSTO_ArraySequence_H
-#include "Dynamic_array.h"
-#include "sequence.h"
+#include "dynamic_array.h"
 #include <iostream>
 
 template<class T>
-class ArraySequence: public Sequence<T> {
+class ArraySequence{
 private:
     Dynamic_array<T> dynArr;
 public:
@@ -51,11 +50,11 @@ public:
         dynArr = array.dynArr;
     }
 
-    explicit ArraySequence(Sequence<T> &sequence) {
-        for (int i = 0; i < sequence.get_len(); i++) {
-            append(sequence[i]);
-        }
-    }
+    //explicit ArraySequence(Sequence<T> &sequence) {
+    //    for (int i = 0; i < sequence.get_len(); i++) {
+    //        append(sequence[i]);
+    //    }
+    //}
 
     explicit ArraySequence(const Dynamic_array<T> &array) {
         dynArr = array;
@@ -265,4 +264,6 @@ std::ostream& operator<< (std::ostream &out, ArraySequence<T> &arr){
     return std::cout << std::endl;
 }
 
-#endif //PROSTO_ArraySequence_H
+
+
+#endif // ARRAYSEQUENCE_H

@@ -10,4 +10,5 @@ add_executable(Lab_2 main.cpp
         link_list.h
         linkseq.h
         sequence.h
-        SortedSequence.h)
+        SortedSequence.h
+        AlphabetPointer.h)

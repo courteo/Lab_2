@@ -1,5 +1,6 @@
-#ifndef LAB_2_CACHE_H
-#define LAB_2_CACHE_H
+#ifndef CACHE_H
+#define CACHE_H
+
 
 #include "SortedSequence.h"
 #include "string"
@@ -156,4 +157,5 @@ public:
 
 };
 
-#endif //LAB_2_CACHE_H
+
+#endif // CACHE_H
