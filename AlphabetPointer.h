@@ -29,7 +29,8 @@ public:
     }
 
     int GetAlphabet(){
-        for (int i = 0; i <Alphabet.get_len(); i++){
+        for (int i = 0; i < Alphabet.get_len(); i++){
+            if (i>0)
             if (Alphabet.operator[](i).p_number != Alphabet.operator[](i - 1).p_number)
                 std::cout << '\n';
             std::cout << "{ " << Alphabet.operator[](i).p_word << ", Number of Page: " << Alphabet.operator[](i).p_number
