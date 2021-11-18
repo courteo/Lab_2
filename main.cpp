@@ -3,12 +3,15 @@
 #include "Cache.h"
 #include "ctime"
 #include "string"
-
+#include "AlphabetPointer.h"
 
 int main() {
-    std::string a = "\\";
-    std::cout << a.size();
+    AlphabetPointer b;
+    b.InputArray();
+    b.SetSizeOfPage(20);
+    b.GetAlphabet();
     return 0;
+    /*
     Cache<int> A;
     auto q = A.PersonInput();
     auto w = A.PersonInput();
@@ -30,4 +33,5 @@ int main() {
     std::cout << A.FindCacheIn(e);
 
     return 0;
+     */
 }

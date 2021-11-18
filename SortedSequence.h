@@ -44,7 +44,7 @@ public:
             return;
         }
 
-        if (get_len() + 1 == max){
+        if (get_len() + 1 == max){ // check on max length of sequence
             removeLast();
         }
 

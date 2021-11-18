@@ -29,24 +29,24 @@ private:
 
     struct Element {
         int p_CacheTimes; // key
-        Person p_CacheIn; // value
+        Person p_InCache; // value
 
-        Element(): p_CacheIn(Person()), p_CacheTimes(0){};
-        explicit Element(Person CacheIn): p_CacheIn(CacheIn), p_CacheTimes(0){};
+        Element(): p_InCache(Person()), p_CacheTimes(0){};
+        explicit Element(Person InCache): p_InCache(InCache), p_CacheTimes(0){};
 
         bool operator > ( const Element &other) const {
             return this->p_CacheTimes > other.p_CacheTimes;
         }
 
         friend std::ostream& operator<< (std::ostream &out, Element &arr){
-            return std::cout << "{ " << arr.p_CacheTimes << " : " << arr.p_CacheIn << " }   ";
+            return std::cout << "{ " << arr.p_CacheTimes << " : " << arr.p_InCache << " }   ";
         }
 
     };
 
-    int p_MaxCapacity;
-    int p_Capacity;
-    SortedSequence<Element> myCache;
+    int p_MaxCapacity; // max capacity of cache
+    int p_Capacity; // current capacity of cache
+    SortedSequence<Element> myCache; // our Dictionary
 public:
 
     Cache(int Capacity = 0, int MaxCapacity = 0) {
@@ -72,20 +72,20 @@ public:
         return p;
     }
 
-    int FindCacheIn(Person CacheIn){
+    int FindInCache(Person InCache) { // find index by value of Dictionary
         for (int i = 0; i < GetCapacity(); i++){
-            if (CacheIn == myCache[i].p_CacheIn)
+            if (InCache == myCache[i].p_InCache)
                 return i;
         }
         return -1;
     };
 
-    bool IsContains(Person CacheIn){
+    bool IsContain(Person InCache){ // check on contain in cache
         if (GetCapacity() == 0)
             return false;
 
         for (int i = 0; i < p_Capacity; i++)
-            if (myCache[i].p_CacheIn == CacheIn)
+            if (myCache[i].p_InCache == InCache)
                 return true;
         return false;
     };
@@ -108,20 +108,20 @@ public:
         return myCache[left];
     };
 
-    void Add(Person CacheIn){
-        if (IsContains(CacheIn) == true){
+    void Add(Person InCache){
+        if (IsContain(InCache) == true){ // check on contain
             Element el;
-            el.p_CacheIn = CacheIn;
-            el.p_CacheTimes = myCache[FindCacheIn(CacheIn)].p_CacheTimes + 1;
+            el.p_InCache = InCache;
+            el.p_CacheTimes = myCache[FindInCache(InCache)].p_CacheTimes + 1; // increase number of requests
 
-            myCache.remove(FindCacheIn(CacheIn));
+            myCache.remove(FindInCache(InCache));
             myCache.add(el, p_MaxCapacity);
             return;
         }
 
         Element el;
         el.p_CacheTimes = 1;
-        el.p_CacheIn = CacheIn;
+        el.p_InCache = InCache;
 
         myCache.add(el, p_MaxCapacity);
         p_Capacity++;
@@ -141,8 +141,8 @@ public:
         p_Capacity--;
     };
 
-    void Remove(Person CacheIn){
-        myCache.remove(FindCacheIn(CacheIn));
+    void Remove(Person InCache){
+        myCache.remove(FindInCache(InCache));
         p_Capacity--;
     };
 
